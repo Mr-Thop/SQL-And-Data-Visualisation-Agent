@@ -6,7 +6,7 @@ This project provides an interactive agent system that allows users to convert n
 
 This system uses Google’s generative AI (Gemini) to translate natural language into MySQL queries. It then connects to a MySQL database and executes the generated query. The architecture includes:
 
-- **LLM Agent**: Uses Google's Gemini AI to generate SQL queries from natural language.
+- **LLM Agent**: Uses Google's Gemini API to generate SQL queries from natural language.
 - **Authentication Agent**: Manages MySQL authentication and connects to the database.
 - **Database Agent**: Executes the generated SQL queries against the connected MySQL database.
 - **User Agent**: Facilitates interaction between the user and the system, managing database connections and query executions.
@@ -23,8 +23,8 @@ This system uses Google’s generative AI (Gemini) to translate natural language
 1. Clone the repository to your local machine.
 
 ```bash
-git clone https://github.com/yourusername/llm-mysql-agent.git
-cd llm-mysql-agent
+git clone https://github.com/yourusername/SQL-And-Data-Visualisation-Agent.git
+cd SQL-And-Data-Visualisation-Agent
 ```
 
 2. Install the required Python libraries.
