@@ -1,7 +1,6 @@
 import google.generativeai as genai
 import mysql.connector
-
-import google.generativeai as genai
+import os
 
 class LLMAgent:
     def __init__(self, api_key):
@@ -54,7 +53,7 @@ class DatabaseAgent:
         try:
             cursor = self.connection.cursor()
             cursor.execute(query)
-            if query.strip().lower().startswith("select"):
+            if query.strip().lower().startswith("select") or query.strip().lower().startswith("show") or query.strip().lower().startswith("describe") :
                 return cursor.fetchall()
             else:
                 self.connection.commit()
@@ -84,7 +83,7 @@ class UserAgent:
 
 
 if __name__ == "__main__":
-    GEMINI_API_KEY = "AIzaSyCvgsI2AYmYHv27I1IfMF5X1wNWENP2tsU"  
+    GEMINI_API_KEY = os.get_env("API_KEY") 
 
     hostname = input("Enter hostname: ")
     user_id = input("Enter user ID: ")
