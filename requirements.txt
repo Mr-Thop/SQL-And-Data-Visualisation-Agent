@@ -1,3 +1,14 @@
 mysql-connector-python
 google
 google-generativeai
+pandas
+matplotlib
+seaborn
+logging
+datetime
+io
+base64
+flask
+Flask-Cors
+json
+os

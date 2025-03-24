@@ -1,125 +1,72 @@
-# SQL Agent
+The **SQL and Data Visualization Agent** is an interactive system designed to convert natural language queries into SQL commands using Google's Gemini API, execute them on a MySQL database, and present the results through various data visualizations. This tool streamlines the process of database querying and data analysis, making it accessible to users without extensive SQL knowledge.
 
-This project provides an interactive agent system that allows users to convert natural language queries into MySQL queries using Google Gemini API and execute them against a MySQL database. The system consists of multiple agents for managing authentication, SQL query generation, and database interaction.
+## Features
 
-## **Overview**
+- **Natural Language to SQL Conversion**: Utilizes Google's Gemini API to translate user-friendly language into precise SQL queries.
+- **Database Interaction**: Connects to a MySQL database to execute generated SQL commands.
+- **Data Visualization**: Presents query results through various visualization techniques, enhancing data interpretation.
 
-This system uses Google’s generative AI (Gemini) to translate natural language into MySQL queries. It then connects to a MySQL database and executes the generated query. The architecture includes:
+## Components
 
-- **LLM Agent**: Uses Google's Gemini API to generate SQL queries from natural language.
-- **Authentication Agent**: Manages MySQL authentication and connects to the database.
-- **Database Agent**: Executes the generated SQL queries against the connected MySQL database.
-- **User Agent**: Facilitates interaction between the user and the system, managing database connections and query executions.
+1. **LLM Agent**: Interacts with the Gemini API to generate SQL queries from natural language inputs.
+2. **Authentication Agent**: Manages authentication and establishes connections to the MySQL database.
+3. **Database Agent**: Executes SQL queries and retrieves results from the database.
+4. **User Agent**: Coordinates interactions between the user, LLM Agent, and Database Agent to facilitate seamless operations.
 
-## **How it Works**
+## Installation
 
-1. **Input**: The user inputs a natural language query (e.g., "Find all employees with salaries greater than 50000").
-2. **Processing**: The query is converted to an SQL query using Google's Gemini AI model.
-3. **Execution**: The generated SQL query is executed against the MySQL database.
-4. **Output**: Results from the database are returned to the user.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Mr-Thop/SQL-And-Data-Visualisation-Agent.git
+   cd SQL-And-Data-Visualisation-Agent
+   ```
+
 
-## **Installation**
+2. **Install Dependencies**:
+   Ensure you have Python installed, then install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 
-1. Clone the repository to your local machine.
+3. **Set Up Google Gemini API Key**:
+   Obtain an API key from Google and set it as an environment variable:
+   ```bash
+   export GEMINI_API_KEY='your_api_key_here'
+   ```
+
 
-```bash
-git clone https://github.com/yourusername/SQL-And-Data-Visualisation-Agent.git
-cd SQL-And-Data-Visualisation-Agent
-```
+4. **Configure Database Connection**:
+   Update the database configuration in the `config.py` file with your MySQL database credentials.
 
-2. Install the required Python libraries.
+## Usage
 
-```bash
-pip install -r requirements.txt
-```
+1. **Start the Application**:
+   ```bash
+   python main.py
+   ```
+
 
-3. **Google Gemini API Key**: Ensure you have a valid API key from Google Generative AI (Gemini). Set the API key as an environment variable:
+2. **Interact with the Agent**:
+   Input your natural language queries when prompted. The system will process these inputs, generate SQL queries, execute them, and display the results along with appropriate visualizations.
 
-```bash
-export API_KEY="your-gemini-api-key"
-```
+## Example
 
-Alternatively, you can hard-code it in the script, but it's not recommended for security reasons.
+- **User Input**: "Show the average sales per month for the last year."
+- **System Process**:
+  - Converts the input into an SQL query.
+  - Executes the query on the connected MySQL database.
+  - Generates a line chart displaying average sales per month.
+- **Output**: A line chart visualizing the average monthly sales for the past year.
 
-4. Install the MySQL connector for Python.
+## Contributing
 
-```bash
-pip install mysql-connector-python
-```
+Contributions are welcome! Please fork the repository and submit a pull request with your enhancements or bug fixes.
 
-## **Usage**
+## License
 
-1. **Run the Script**: Start the application by running the `main.py` script.
-
-```bash
-python main.py
-```
-
-2. **Input Credentials**: When prompted, enter your MySQL database connection details:
-    - Hostname: The address of your MySQL server (e.g., `localhost`).
-    - User ID: Your MySQL username.
-    - Password: Your MySQL password.
-    - Database Name: The name of the database to interact with.
-
-3. **Input Queries**: You can now input natural language queries. For example:
-    - "Select all customers with an email address"
-    - "Show me all employees hired after 2020"
-
-4. **Exit**: Type `exit` to quit the program.
-
-## **Code Explanation**
-
-### **LLMAgent Class**
-
-- This class handles communication with the Google Gemini API.
-- It takes the user's natural language query and converts it into a valid MySQL query.
-- Uses the `GenerativeModel` from the `google.generativeai` module to generate content based on a provided prompt.
-
-### **AuthenticationAgent Class**
-
-- This class handles authentication with the MySQL database using the `mysql.connector` library.
-- It establishes a connection to the database using the provided credentials.
-
-### **DatabaseAgent Class**
-
-- This class is responsible for executing SQL queries on the connected MySQL database.
-- It uses a MySQL cursor to run the query and handle the results (either fetch results or commit changes).
-
-### **UserAgent Class**
-
-- This class acts as a mediator between the user and the agents.
-- It connects to the database, processes the user’s natural query, and returns the result of the executed SQL query.
-- It uses both the `LLMAgent` and `AuthenticationAgent` to streamline the user experience.
-
-## **Environment Variables**
-
-- **API_KEY**: Google Gemini API key for accessing the generative model. Make sure to set this in your environment or directly in the script (not recommended for security reasons).
-
-## **Error Handling**
-
-- If there are issues with database authentication or query execution, appropriate error messages will be displayed.
-- If the system is not connected to the database, it will prompt you to first establish a connection.
-
-## **Future Enhancements**
-
-- Support for more databases beyond MySQL (e.g., PostgreSQL, SQLite).
-- Ability to handle more complex queries with enhanced validation.
-- Option to log queries and results for auditing or debugging purposes.
-- Implement more advanced natural language processing features for improved query accuracy.
-
-## **Contributing**
-
-If you would like to contribute to this project:
-
-1. Fork the repository.
-2. Create a new branch.
-3. Commit your changes.
-4. Open a pull request with a description of the changes you have made.
-
-## **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ---
 
-Feel free to modify the README as needed based on the actual setup and requirements of your project!
+For more detailed information and the latest updates, please refer to the [GitHub repository](https://github.com/Mr-Thop/SQL-And-Data-Visualisation-Agent). 
