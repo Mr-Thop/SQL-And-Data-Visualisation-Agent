@@ -10,6 +10,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
 import mysql.connector
+import os
 
 
 
@@ -18,7 +19,8 @@ CORS(app, origins=["http://localhost:3000"])
 logging.basicConfig(level=logging.INFO)
 
 # Configure Generative AI model
-genai.configure(api_key="AIzaSyCvgsI2AYmYHv27I1IfMF5X1wNWENP2tsU")
+API_KEY = os.getenv("API_KEY")
+genai.configure(api_key= API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Store user session data
@@ -238,7 +240,7 @@ class AIVisualizer:
 
 # Initialize components
 db_manager = DatabaseManager()
-llm_agent = StatefulSQLAgent("AIzaSyCvgsI2AYmYHv27I1IfMF5X1wNWENP2tsU")
+llm_agent = StatefulSQLAgent(API_KEY)
 
 @app.route('/api/connect', methods=['POST'])
 def connect():
