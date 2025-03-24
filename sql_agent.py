@@ -128,7 +128,7 @@ class DatabaseManager:
 
 # Initialize components
 db_manager = DatabaseManager()
-llm_agent = StatefulSQLAgent("AIzaSyCvgsI2AYmYHv27I1IfMF5X1wNWENP2tsU")
+llm_agent = StatefulSQLAgent("API_KEY_HERE") #add your api key here
 
 @app.route('/api/connect', methods=['POST'])
 def connect():
