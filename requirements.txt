@@ -6,7 +6,6 @@ matplotlib
 seaborn
 logging
 datetime
-io
 base64
 flask
 Flask-Cors
