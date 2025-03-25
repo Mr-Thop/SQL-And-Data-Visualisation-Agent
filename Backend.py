@@ -341,5 +341,9 @@ def visualize():
         logging.error(f"Error generating visualization: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+@app.route('/',methods=['GET'])
+def hello():
+    return 'Agent\'s Backend is Running Successfully'
+
 if __name__ == '__main__':
     app.run(debug=True)
