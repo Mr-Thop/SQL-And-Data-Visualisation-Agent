@@ -161,7 +161,7 @@ class AIVisualizer:
         "{query}"
         
         Identify the visualization type from: ["histogram", "scatter plot", "box plot", "bar chart", "pair plot", "pie chart", "heatmap"].
-        based on the user Query and in the response provide the visualisation from the above format itself. Dont give any columns when the visualization is pairplot or heatmap.
+        based on the user Query and in the response provide the visualisation from the above format itself.
         **Example Format:**
 
         User Query: "Show me a bar chart of sales by category."
