@@ -8,5 +8,4 @@ logging
 datetime
 flask
 Flask-Cors
-os
 gunicorn
