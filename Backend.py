@@ -242,7 +242,7 @@ class AIVisualizer:
 db_manager = DatabaseManager()
 llm_agent = StatefulSQLAgent(API_KEY)
 
-@app.route('/api/connect', methods=['GET','POST'])
+@app.route('/connect', methods=['GET','POST'])
 def connect():
     data = request.json
     success, message = db_manager.connect(
@@ -254,7 +254,7 @@ def connect():
     )
     return jsonify({"success": success, "message": message})
 
-@app.route('/api/query', methods=['GET','POST'])
+@app.route('/query', methods=['GET','POST'])
 def handle_query():
     data = request.json
     llm_agent.log_state("START")
@@ -300,7 +300,7 @@ def handle_query():
             "states": llm_agent.states
         }), 500
 
-@app.route('/api/upload', methods=['GET','POST'])
+@app.route('/upload', methods=['GET','POST'])
 def upload_csv():
     try:
         data = request.get_json()
@@ -319,7 +319,7 @@ def upload_csv():
         logging.error(f"Error processing CSV: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/visualize', methods=['GET','POST'])
+@app.route('/visualize', methods=['GET','POST'])
 def visualize():
     try:
         data = request.get_json()
