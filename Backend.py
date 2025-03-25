@@ -156,20 +156,21 @@ class AIVisualizer:
     def generate_visualization(self, query):
         self.log_state("PROCESS - AI interpreting query")
 
-        # 📝 Updated prompt with example
         prompt = f"""
         Given the dataset with columns {list(self.df.columns)}, interpret the following query:
         "{query}"
         
-        Identify the best visualization type from: histogram, scatter plot, box plot, bar chart, line graph, pie chart, heatmap.
-        
+        Identify the visualization type from: ["histogram", "scatter plot", "box plot", "bar chart", "pair plot", "pie chart", "heatmap"].
+        based on the user Query and in the response provide the visualisation from the above format itself. Dont give any columns when the visualization is pairplot or heatmap.
         **Example Format:**
+
         User Query: "Show me a bar chart of sales by category."
         Response: {{ "visualization": "bar chart", "columns": ["Category", "Sales"] }}
 
         Return a JSON in this format:
         {{ "visualization": "chosen_type", "columns": ["col1", "col2"] }}
         """
+
 
         try:
             response = model.generate_content(prompt)
